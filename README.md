@@ -1,4 +1,4 @@
-# lively
+# email lively
 
 Enrich your emails with live data from the web instantly.
 
