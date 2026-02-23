@@ -1,0 +1,9 @@
+#!/bin/sh
+# Remove Co-authored-by: Cursor (and similar) from commit messages.
+
+COMMIT_MSG_FILE="$1"
+[ -z "$COMMIT_MSG_FILE" ] || [ ! -f "$COMMIT_MSG_FILE" ] && exit 0
+
+tmp=$(mktemp)
+grep -v '^Co-authored-by:.*[Cc]ursor' "$COMMIT_MSG_FILE" > "$tmp" && mv "$tmp" "$COMMIT_MSG_FILE"
+exit 0

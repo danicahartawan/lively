@@ -104,7 +104,10 @@ export default function Home() {
 
           {/* Enrichment Result Panel */}
           {enrichmentResult && (
-            <EnrichmentPanel result={enrichmentResult} />
+            <EnrichmentPanel
+              result={enrichmentResult}
+              onSendEnriched={handleSend}
+            />
           )}
 
           {/* Email Composer */}

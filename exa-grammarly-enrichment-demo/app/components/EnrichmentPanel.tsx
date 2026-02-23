@@ -11,9 +11,10 @@ interface EnrichmentResult {
 
 interface EnrichmentPanelProps {
   result: EnrichmentResult | null;
+  onSendEnriched?: (content: string) => void;
 }
 
-export default function EnrichmentPanel({ result }: EnrichmentPanelProps) {
+export default function EnrichmentPanel({ result, onSendEnriched }: EnrichmentPanelProps) {
   if (!result) {
     return (
       <div className="w-full max-w-4xl mx-auto mt-8 p-8 bg-white rounded-lg shadow-lg">
@@ -38,6 +39,17 @@ export default function EnrichmentPanel({ result }: EnrichmentPanelProps) {
             {result.enrichedContent}
           </div>
         </div>
+        {onSendEnriched && (
+          <div className="mt-4 flex justify-end">
+            <button
+              type="button"
+              onClick={() => onSendEnriched(result.enrichedContent)}
+              className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors text-sm"
+            >
+              Send
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Sources */}
